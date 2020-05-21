@@ -12,3 +12,6 @@
  
 # install deno (linux)
  buka Shell lalu ketikan perintah: curl -fsSL https://deno.land/x/install/install.sh | sh
+
+# post data
+ untuk post/put data gunakan raw JSON
