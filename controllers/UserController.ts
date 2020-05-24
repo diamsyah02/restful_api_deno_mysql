@@ -1,5 +1,7 @@
-import { md5 } from "https://deno.land/x/md5/mod.ts"
-import * as bcrypt from "https://deno.land/x/bcrypt/mod.ts"
+import {
+    bcrypt,
+    md5
+} from '../deps.ts'
 import { client } from '../db.ts'
 
 const getUsers = async ({ response } : { response: any }) => {
@@ -23,7 +25,9 @@ const updateUsers = async ({ params, request, response } : { params: any; reques
     let body = await request.body()
     let fullname = body.value.fullname
     let email = body.value.email
-    await client.execute('UPDATE user SET fullname = ?, email = ? WHERE id = ?', [fullname, email, params.id])
+    let salt = bcrypt.gensalt(8)
+    let password = bcrypt.hashpw(md5(body.value.password), salt)
+    await client.execute('UPDATE user SET fullname = ?, email = ?, password = ? WHERE id = ?', [fullname, email, password, params.id])
     response.status = 200
     response.body = { message: 'Update successfully !' }
 }

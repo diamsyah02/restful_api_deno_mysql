@@ -1,5 +1,7 @@
-import { md5 } from "https://deno.land/x/md5/mod.ts"
-import * as bcrypt from "https://deno.land/x/bcrypt/mod.ts"
+import {
+    bcrypt,
+    md5
+} from '../deps.ts'
 import { 
     makeJwt,
     setExpiration,
