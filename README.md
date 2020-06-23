@@ -2,7 +2,7 @@
  Membuat restful api dengan deno, jwt dan mysql (Auth & CRUD)
  
 # run deno
- run deno --allow-env --allow-net main.ts
+ deno run --allow-env --allow-net main.ts
  
 # Noted
  silahkan download dan langsung run jika sudah install deno, jika belum silahkan install dulu
